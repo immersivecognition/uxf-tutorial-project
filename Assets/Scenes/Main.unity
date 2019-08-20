@@ -320,9 +320,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a537cd6acec3dcc429d35d42e1bf587b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  red: {r: 0, g: 0, b: 0, a: 0}
-  amber: {r: 0, g: 0, b: 0, a: 0}
-  green: {r: 0, g: 0, b: 0, a: 0}
+  red: {r: 1, g: 0, b: 0, a: 1}
+  amber: {r: 1, g: 0.47684106, b: 0, a: 1}
+  green: {r: 0.11459876, g: 0.7169812, b: 0, a: 1}
 --- !u!54 &382167217
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -801,3 +801,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectionCamera: {fileID: 963194227}
+--- !u!1 &1969140060 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 6b823ade2288e544daaf6314405c6ff6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1642648745}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &1969140061
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969140060}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!135 &1969140062
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969140060}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1969140064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969140060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe7907318d58144da812d930cd08db2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectSound: {fileID: 8300000, guid: 2bd58623565b86b42a110c21b4d601a7, type: 3}
