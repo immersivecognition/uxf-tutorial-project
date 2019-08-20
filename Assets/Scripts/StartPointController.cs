@@ -19,15 +19,29 @@ public class StartPointController : MonoBehaviour
         material = GetComponent<MeshRenderer>().material;
     }
 
+    IEnumerator Countdown()
+    {
+        yield return new WaitForSeconds(0.5f);
+        material.color = green;
+    }
+
     /// OnTriggerEnter is called when the Collider 'other' enters the trigger.
     void OnTriggerEnter(Collider other)
     {
-        material.color = amber;
+        if (other.name == "Cursor")
+        {
+            material.color = amber;
+            StartCoroutine(Countdown());    
+        }
     }
 
     /// OnTriggerExit is called when the Collider 'other' has stopped touching the trigger.
     void OnTriggerExit(Collider other)
-    {      
-        material.color = red;        
+    {    
+        if (other.name == "Cursor")
+        {
+            StopAllCoroutines();
+            material.color = red;
+        }  
     }
 }
