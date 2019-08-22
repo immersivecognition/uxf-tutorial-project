@@ -20,8 +20,9 @@ public class FeedbackController : MonoBehaviour
     {
         // get the results for this trial
         // we have to cast to types (using the name of the type in brackets)
-        float angle = (float) endedTrial.result["angle"];
         string outcome = (string) endedTrial.result["outcome"];
+        if (outcome != "hit" & outcome != "miss") return; // early exit, dont do anything
+        float angle = (float) endedTrial.result["angle"];     
 
         // calculate new position of cursor copy by rotating "angle" degrees about the y axis
         // relative to the forward position, and using radius of 0.2
