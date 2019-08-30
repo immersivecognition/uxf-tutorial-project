@@ -1,3 +1,5 @@
 {
-    "vmr_angle": 20
+    "vmr_angle": 20,
+    "clamped_error": true,
+    "online_feedback": true
 }

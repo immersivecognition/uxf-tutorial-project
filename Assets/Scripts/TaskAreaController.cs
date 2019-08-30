@@ -18,7 +18,6 @@ public class TaskAreaController : MonoBehaviour
 
             // calculate the angle from the target (forward direction) to the cursor (about the up axis)
             float angle = Vector3.SignedAngle(targetDir, cursorPos, Vector3.up);
-            Debug.Log(angle);
 
             // store the result in the current trial - this will then be saved in the trial_results csv
             session.CurrentTrial.result["angle"] = angle;
