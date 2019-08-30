@@ -1,5 +1,11 @@
 {
+    "practice_ntrials": 5,
+    "perturbation_ntrials": 100,
+    "deadapt_ntrials": 20,
     "vmr_angle": 20,
     "clamped_error": true,
-    "online_feedback": true
+    "online_feedback": true,
+    "timeout_period": 1.0,
+    "startpoint_period": 0.5, 
+    "instruction": "Reach for the target!"
 }

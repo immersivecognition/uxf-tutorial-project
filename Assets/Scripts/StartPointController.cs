@@ -27,7 +27,8 @@ public class StartPointController : MonoBehaviour
 
     IEnumerator Countdown()
     {
-        yield return new WaitForSeconds(0.5f);
+        float timePeriod = session.settings.GetFloat("startpoint_period");
+        yield return new WaitForSeconds(timePeriod);
         material.color = green;
         session.BeginNextTrial(); // <-- new
     }
@@ -36,7 +37,7 @@ public class StartPointController : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         // only do something when we are NOT currently in a trial.
-        if (other.name == "Cursor" & !session.InTrial) // < -- new
+        if (other.name == "Cursor" & session.hasInitialised & !session.InTrial) // < -- new
         {
             material.color = amber;
             StartCoroutine(Countdown());    
