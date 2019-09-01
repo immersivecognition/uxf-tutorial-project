@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.uxftutorialproject.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "C:\\Users\\jack\\work\\uxf-tutorial-project\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "uxf-tutorial-project [Testing]"
+        }
+      }
+    }
+  ]
+}
