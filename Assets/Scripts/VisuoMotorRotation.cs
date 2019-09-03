@@ -35,7 +35,9 @@ public class VisuoMotorRotation : MonoBehaviour
             // calculate distance from center
             float dist = (hiddenCursor.position - startPoint.position).magnitude;
             // move towards target with calculated distance (i.e. with 0 error)
-            transform.position = startPoint.position + Vector3.forward * dist;
+            Vector3 newPos = startPoint.position + Vector3.forward * dist;
+            newPos.y = transform.position.y; // lock to 2D
+            transform.position = newPos;
         }
         else
         {
