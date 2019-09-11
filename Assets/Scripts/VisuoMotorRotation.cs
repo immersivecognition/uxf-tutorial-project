@@ -8,17 +8,9 @@ public class VisuoMotorRotation : MonoBehaviour
     public Session session;
     public Transform hiddenCursor;
     public Transform startPoint;
-    
-    MeshRenderer cursorMR;
     float vmrAngle = 0f;
     bool clamped = false;
 
-    void Awake()
-    {
-        // get the mesh renderer attached to this component
-        // could also be done with public variable
-        cursorMR = GetComponent<MeshRenderer>();
-    }
 
     void Update()
     {
@@ -54,8 +46,5 @@ public class VisuoMotorRotation : MonoBehaviour
         // use settings.Get*() to access settings (independent variables)
         vmrAngle = session.CurrentTrial.settings.GetFloat("vmr_angle");
         clamped = session.CurrentTrial.settings.GetBool("clamped_error");
-
-        // enable/disable cursor mesh renderer as needed
-        cursorMR.enabled = session.CurrentTrial.settings.GetBool("online_feedback");
     }
 }

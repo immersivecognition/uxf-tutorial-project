@@ -8,6 +8,7 @@ public class SetupNextTrial : MonoBehaviour
     public MeshRenderer cursorMR;
     public GameObject cursorCopy;
     public GameObject startPoint;
+    public GameObject target;
 
     public void DelayedSetup()
     {
@@ -24,6 +25,7 @@ public class SetupNextTrial : MonoBehaviour
         cursorMR.enabled = true;
         cursorCopy.SetActive(false);
         startPoint.SetActive(true);
+        target.SetActive(false);
     }
 
 }

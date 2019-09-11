@@ -2,10 +2,11 @@
     "practice_ntrials": 2,
     "perturbation_ntrials": 10,
     "deadapt_ntrials": 2,
-    "vmr_angle": 20,
+    "vmr_angle": 30,
     "clamped_error": false,
     "online_feedback": true,
     "timeout_period": 1.0,
     "startpoint_period": 0.5, 
+    "sound_feedback": "reward",
     "instruction": "Reach for the target!"
 }

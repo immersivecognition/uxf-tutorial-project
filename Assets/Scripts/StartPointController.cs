@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // add the UXF namespace     
-using UXF; // <-- new
+using UXF; 
 
 public class StartPointController : MonoBehaviour
 {
     // reference to the UXF Session - so we can start the trial.
-    public Session session; // <-- new
+    public Session session; 
 
     // define 3 public variables - we can then assign their color values in the inspector.
     public Color red;
@@ -25,12 +25,13 @@ public class StartPointController : MonoBehaviour
         material = GetComponent<MeshRenderer>().material;
     }
 
-    IEnumerator Countdown()
+    IEnumerator Countdown(Collider other)
     {
         float timePeriod = session.settings.GetFloat("startpoint_period");
         yield return new WaitForSeconds(timePeriod);
         material.color = green;
-        session.BeginNextTrial(); // <-- new
+        session.BeginNextTrial(); 
+        other.GetComponent<MeshRenderer>().enabled = false;
     }
 
     /// OnTriggerEnter is called when the Collider 'other' enters the trigger.
@@ -40,7 +41,7 @@ public class StartPointController : MonoBehaviour
         if (other.name == "Cursor" & session.hasInitialised & !session.InTrial) // < -- new
         {
             material.color = amber;
-            StartCoroutine(Countdown());    
+            StartCoroutine(Countdown(other));    
         }
     }
 
@@ -51,6 +52,10 @@ public class StartPointController : MonoBehaviour
         {
             StopAllCoroutines();
             material.color = red;
+            if (session.CurrentTrial.settings.GetBool("online_feedback"))
+            {
+                other.GetComponent<MeshRenderer>().enabled = true;
+            }
         }  
     }
 }

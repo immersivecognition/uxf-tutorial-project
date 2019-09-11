@@ -13,6 +13,9 @@ public class FeedbackController : MonoBehaviour
 
     // reference to the AudioClip we want to play on hit.
     public AudioClip collectSound;
+    // reference to the AudioClip we want to play on reach.
+
+    public AudioClip reachSound;
 
 
     // method to show the feedback. the On Trial End event will pass us the reference to the trial that has just completed
@@ -25,8 +28,8 @@ public class FeedbackController : MonoBehaviour
         float angle = (float) endedTrial.result["angle"];     
 
         // calculate new position of cursor copy by rotating "angle" degrees about the y axis
-        // relative to the forward position, and using radius of 0.2
-        Vector3 newPosition = Quaternion.Euler(0, angle, 0) * (Vector3.forward * 0.2f);
+        // relative to the forward position, and using radius of 0.15
+        Vector3 newPosition = Quaternion.Euler(0, angle, 0) * (Vector3.forward * 0.15f);
         
         // don't change the height. 2D task
         newPosition.y = cursorCopy.position.y;
@@ -35,11 +38,18 @@ public class FeedbackController : MonoBehaviour
         cursorCopy.gameObject.SetActive(true);
         cursorCopy.position = newPosition;
 
-        // if we hit, play our "collect" audio clip (copied code from TargetController)
-        if (outcome == "hit")
+        // get sound feedback setting
+        string soundFeedback = endedTrial.settings.GetString("sound_feedback");
+
+        // if we hit, play our "collect" audio clip
+        if (outcome == "hit" & soundFeedback == "reward")
         {
             // we will play it at the new cursorCopy location, 100% volume
             AudioSource.PlayClipAtPoint(collectSound, newPosition, 1.0f);
+        }
+        else if (soundFeedback == "reach")
+        {
+            AudioSource.PlayClipAtPoint(reachSound, newPosition, 1.0f);
         }
     }   
 }
