@@ -39,7 +39,7 @@ public class PositionAdjuster : MonoBehaviour
             if ((headCamera != null) && (cameraRig != null))
             {
                 float yaw = PlayerPrefs.GetFloat("camera_offset_yaw");
-                cameraRig.Rotate(0f, -yaw, 0f);
+                cameraRig.eulerAngles = new Vector3(0, yaw, 0);
 
                 float x = PlayerPrefs.GetFloat("camera_offset_x");
                 float z = PlayerPrefs.GetFloat("camera_offset_z");
@@ -72,9 +72,9 @@ public class PositionAdjuster : MonoBehaviour
         {
             //ROTATION
             // Get current head heading in scene (y-only, to avoid tilting the floor)
-            float yaw = headCamera.transform.eulerAngles.y;
+            float yawOffset = headCamera.transform.eulerAngles.y;
             // Now rotate CameraRig in opposite direction to compensate
-            cameraRig.Rotate(0f, -yaw, 0f);
+            cameraRig.Rotate(0f, -yawOffset, 0f);
  
             //POSITION
             // Calculate postional offset between CameraRig and Camera
@@ -85,7 +85,7 @@ public class PositionAdjuster : MonoBehaviour
             cameraRig.position = targetFloorPosition - offsetPos;
 
             // Store in PlayerPrefs
-            PlayerPrefs.SetFloat("camera_offset_yaw", yaw);
+            PlayerPrefs.SetFloat("camera_offset_yaw", cameraRig.eulerAngles.y);
             PlayerPrefs.SetFloat("camera_offset_x", offsetPos.x);
             PlayerPrefs.SetFloat("camera_offset_z", offsetPos.z);
         }
